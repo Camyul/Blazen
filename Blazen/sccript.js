@@ -8,13 +8,13 @@ $(document).ready(function() {
 
     if (startMining) {
 
-        //startMining.click();
-        setTimeout(startMining.click(), 7000);
+        console.log('Start Mining');
+        setTimeout(startMiningWithTimeout, 7000);
         return;
     } else if (resumeWork) {
 
-        //resumeWork.click();
-        setTimeout(resumeWork.click(), 7000);
+        console.log('Resume Work');
+        setTimeout(resumeWorkWithTimeout, 7000);
         return;
     } else {
 
@@ -110,5 +110,13 @@ $(document).ready(function() {
         }
 
         return found;
+    }
+
+    function startMiningWithTimeout(startMining) {
+        startMining.click();
+    }
+
+    function resumeWorkWithTimeout(resumeWork) {
+        resumeWork.click();
     }
 });
