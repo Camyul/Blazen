@@ -10,10 +10,12 @@ $(document).ready(function() {
 
         //startMining.click();
         setTimeout(startMining.click(), 7000);
+        return;
     } else if (resumeWork) {
 
         //resumeWork.click();
         setTimeout(resumeWork.click(), 7000);
+        return;
     } else {
 
         let ch = document.getElementsByClassName('pulsante_low');
@@ -60,7 +62,7 @@ $(document).ready(function() {
 
                 setTimeout(complete, randomTime);
             } else {
-                let randomNum = getRandomInt(1, 6);
+                let randomNum = getRandomInt(0, 5);
 
                 radio[randomNum].checked = true;
                 console.log(radio.length + ' radio');
