@@ -125,13 +125,13 @@ $(document).ready(function() {
         return found;
     }
 
-    function startMiningWithTimeout(startMining) {
+    function startMiningWithTimeout() {
         let startMining = getAnchor('Start Mining');
 
         startMining.click();
     }
 
-    function resumeWorkWithTimeout(resumeWork) {
+    function resumeWorkWithTimeout() {
         let resumeWork = getAnchor('Resume work');
 
         resumeWork.click();
