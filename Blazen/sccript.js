@@ -1,21 +1,23 @@
 $(document).ready(function() {
 
     let startMining = getAnchor('Start Mining');
-    console.log(startMining + 'Start Mining');
+    console.log(startMining + ' Start Mining');
+
+    let resumeWork = getAnchor('Resume work');
+    console.log(resumeWork + ' resumeWork');
 
     if (startMining) {
 
         //startMining.click();
-        setTimeout(startMining.click(), 2000);
+        setTimeout(startMining.click(), 7000);
+        return;
     }
-
-    let resumeWork = getAnchor('Resume work');
-    console.log(resumeWork + 'resumeWork');
 
     if (resumeWork) {
 
         //resumeWork.click();
-        setTimeout(resumeWork.click(), 2000);
+        setTimeout(resumeWork.click(), 7000);
+        return;
     }
 
     let ch = document.getElementsByClassName('pulsante_low');
@@ -28,7 +30,8 @@ $(document).ready(function() {
     if (startWork && ch.length === 0) {
 
         //resumeWork.click();
-        setTimeout(startWork.click(), 2000);
+        setTimeout(startWork.click(), 7000);
+        return;
     }
 
     let radio = [];
