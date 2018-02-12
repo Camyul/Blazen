@@ -27,9 +27,11 @@ $(document).ready(function() {
             console.log('Click');
 
             let anchorAds = getAnchorAds();
-            console.log(anchorAds);
-            console.log(anchorAds.length);
-            //setTimeout(startWork.click(), 7000);
+            if (anchorAds.length === 5) {
+                anchorAds[2].click();
+            } else {
+                setTimeout(startWork.click(), 7000);
+            }
             return;
         }
 
@@ -84,9 +86,9 @@ $(document).ready(function() {
         let result = [];
 
         for (var i = 0; i < aTags.length; i++) {
-            let url = aTags.href;
+            let url = aTags[i].href;
 
-            if (url.includes('PanelShop new.php?Scelta')) {
+            if (url.includes('PanelShop_new.php?Scelta')) {
                 result.push(aTags[i]);
             }
         }
