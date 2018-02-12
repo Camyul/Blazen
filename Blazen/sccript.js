@@ -1,5 +1,13 @@
 $(document).ready(function() {
+
+    let startMining = getAnchor('Start Mining');
+    console.log(startMining);
+    if (startMining != 'undefined') {
+        startMining.click();
+    }
+
     let ch = document.getElementsByClassName('pulsante_low');
+
     console.log(ch.length + ' cheboxes');
 
     let radio = [];
@@ -15,27 +23,28 @@ $(document).ready(function() {
             ch[i].checked = true;
 
         }
-        if (ch.length === radio.length) {
+
+        if (radio.length === 30) {
             let randomNum = getRandomInt(0, 29);
 
-            radio[randomNum].checked = true;
             console.log(radio.length + ' radio');
+            radio[randomNum].checked = true;
 
             let randomTime = getRandomInt(5500, 9700)
             console.log(randomTime);
 
             setTimeout(complete, randomTime);
+        } else {
+            let randomNum = getRandomInt(1, 6);
+
+            radio[randomNum].checked = true;
+            console.log(radio.length + ' radio');
+
+            let randomTime = getRandomInt(51500, 70700)
+            console.log(randomTime);
+
+            setTimeout(complete, randomTime);
         }
-
-        let randomNum = getRandomInt(1, 6);
-
-        radio[randomNum].checked = true;
-        console.log(radio.length + ' radio');
-
-        let randomTime = getRandomInt(50500, 70700)
-        console.log(randomTime);
-
-        setTimeout(complete, randomTime);
     }
 
     function getRandomInt(min, max) {
@@ -44,5 +53,19 @@ $(document).ready(function() {
 
     function complete() {
         document.getElementsByClassName('pulsante2')[0].click();
+    }
+
+    function getAnchor(searchText) {
+        let aTags = document.getElementsByTagName("a");
+        let found;
+
+        for (var i = 0; i < aTags.length; i++) {
+            if (aTags[i].textContent == searchText) {
+                found = aTags[i];
+                break;
+            }
+        }
+
+        return found;
     }
 });
