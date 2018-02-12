@@ -1,14 +1,35 @@
 $(document).ready(function() {
 
     let startMining = getAnchor('Start Mining');
-    console.log(startMining);
-    if (startMining != 'undefined') {
-        startMining.click();
+    console.log(startMining + 'Start Mining');
+
+    if (startMining) {
+
+        //startMining.click();
+        setTimeout(startMining.click(), 2000);
+    }
+
+    let resumeWork = getAnchor('Resume work');
+    console.log(resumeWork + 'resumeWork');
+
+    if (resumeWork) {
+
+        //resumeWork.click();
+        setTimeout(resumeWork.click(), 2000);
     }
 
     let ch = document.getElementsByClassName('pulsante_low');
 
     console.log(ch.length + ' cheboxes');
+
+    let startWork = getAnchor('Click');
+    console.log(startWork + 'Click');
+
+    if (startWork && ch.length === 0) {
+
+        //resumeWork.click();
+        setTimeout(startWork.click(), 2000);
+    }
 
     let radio = [];
 
