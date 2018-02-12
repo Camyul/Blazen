@@ -1,5 +1,6 @@
 $(document).ready(function() {
     let ch = document.getElementsByClassName('pulsante_low');
+    console.log(ch.length + ' cheboxes');
 
     let radio = [];
 
@@ -18,6 +19,7 @@ $(document).ready(function() {
         let randomNum = getRandomInt(1, 6);
 
         radio[randomNum].checked = true;
+        console.log(radio.length + ' radio');
 
         let randomTime = getRandomInt(50500, 70700)
         console.log(randomTime);
