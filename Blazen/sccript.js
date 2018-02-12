@@ -2,6 +2,7 @@ $(document).ready(function() {
     let ch = document.getElementsByClassName('pulsante_low');
 
     let radio = [];
+
     if (ch.length > 0) {
         for (let i = 0; i < ch.length; i += 1) {
 
@@ -18,12 +19,15 @@ $(document).ready(function() {
 
         radio[randomNum].checked = true;
 
-        setTimeout(complete, 50500);
+        let randomTime = getRandomInt(50500, 70700)
+        console.log(randomTime);
+
+        setTimeout(complete, randomTime);
     }
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
-    };
+    }
 
     function complete() {
         document.getElementsByClassName('pulsante2')[0].click();
