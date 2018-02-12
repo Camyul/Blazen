@@ -28,7 +28,7 @@ $(document).ready(function() {
 
             let anchorAds = getAnchorAds();
             if (anchorAds.length === 5) {
-                anchorAds[2].click();
+                setTimeout(anchorAds[2].click(), 5000);
             } else {
                 setTimeout(startWork.click(), 7000);
             }
