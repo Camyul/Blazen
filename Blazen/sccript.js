@@ -11,63 +11,62 @@ $(document).ready(function() {
         //startMining.click();
         setTimeout(startMining.click(), 7000);
         return;
-    }
-
-    if (resumeWork) {
+    } else if (resumeWork) {
 
         //resumeWork.click();
         setTimeout(resumeWork.click(), 7000);
         return;
-    }
+    } else {
 
-    let ch = document.getElementsByClassName('pulsante_low');
+        let ch = document.getElementsByClassName('pulsante_low');
 
-    console.log(ch.length + ' cheboxes');
+        console.log(ch.length + ' cheboxes');
 
-    let startWork = getAnchor('Click');
-    console.log(startWork + 'Click');
+        let startWork = getAnchor('Click');
+        console.log(startWork + 'Click');
 
-    if (startWork && ch.length === 0) {
+        if (startWork && ch.length === 0) {
 
-        //resumeWork.click();
-        setTimeout(startWork.click(), 7000);
-        return;
-    }
-
-    let radio = [];
-
-    if (ch.length > 0) {
-        for (let i = 0; i < ch.length; i += 1) {
-
-            if (ch[i].type == 'radio') {
-                radio.push(ch[i]);
-                continue;
-            }
-
-            ch[i].checked = true;
-
+            //resumeWork.click();
+            setTimeout(startWork.click(), 7000);
+            return;
         }
 
-        if (radio.length === 30) {
-            let randomNum = getRandomInt(0, 29);
+        let radio = [];
 
-            console.log(radio.length + ' radio');
-            radio[randomNum].checked = true;
+        if (ch.length > 0) {
+            for (let i = 0; i < ch.length; i += 1) {
 
-            let randomTime = getRandomInt(5500, 9700)
-            console.log(randomTime);
+                if (ch[i].type == 'radio') {
+                    radio.push(ch[i]);
+                    continue;
+                }
 
-            setTimeout(complete, randomTime);
-        } else {
-            let randomNum = getRandomInt(1, 6);
+                ch[i].checked = true;
 
-            radio[randomNum].checked = true;
-            console.log(radio.length + ' radio');
+            }
 
-            let randomTime = getRandomInt(51500, 70700)
-            console.log(randomTime);
+            if (radio.length === 30) {
+                let randomNum = getRandomInt(0, 29);
 
-            setTimeout(complete, randomTime);
+                console.log(radio.length + ' radio');
+                radio[randomNum].checked = true;
+
+                let randomTime = getRandomInt(5500, 9700)
+                console.log(randomTime);
+
+                setTimeout(complete, randomTime);
+            } else {
+                let randomNum = getRandomInt(1, 6);
+
+                radio[randomNum].checked = true;
+                console.log(radio.length + ' radio');
+
+                let randomTime = getRandomInt(51500, 70700)
+                console.log(randomTime);
+
+                setTimeout(complete, randomTime);
+            }
         }
     }
 
