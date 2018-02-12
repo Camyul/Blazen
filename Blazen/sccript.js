@@ -9,12 +9,16 @@ $(document).ready(function() {
     if (startMining) {
 
         console.log('Start Mining');
-        setTimeout(startMiningWithTimeout, 7000);
+        let randomTime = getRandomInt(5500, 9700)
+        console.log(randomTime);
+        setTimeout(startMiningWithTimeout, randomTime);
         return;
     } else if (resumeWork) {
 
         console.log('Resume Work');
-        setTimeout(resumeWorkWithTimeout, 7000);
+        let randomTime = getRandomInt(5500, 9700)
+        console.log(randomTime);
+        setTimeout(resumeWorkWithTimeout, randomTime);
         return;
     } else {
 
@@ -30,9 +34,18 @@ $(document).ready(function() {
 
             let anchorAds = getAnchorAds();
             if (anchorAds.length === 5) {
-                setTimeout(anchorAds[2].click(), 5000);
+
+                let randomTime = getRandomInt(5500, 9700);
+                console.log('Choise Ad');
+                console.log(randomTime);
+
+                setTimeout(choiseRandomAd, randomTime);
             } else {
-                setTimeout(startWork.click(), 7000);
+                let randomTime = getRandomInt(5500, 9700);
+                console.log('Click');
+                console.log(randomTime);
+
+                setTimeout(startWorkWithTimeout, randomTime);
             }
             return;
         }
@@ -113,10 +126,26 @@ $(document).ready(function() {
     }
 
     function startMiningWithTimeout(startMining) {
+        let startMining = getAnchor('Start Mining');
+
         startMining.click();
     }
 
     function resumeWorkWithTimeout(resumeWork) {
+        let resumeWork = getAnchor('Resume work');
+
         resumeWork.click();
+    }
+
+    function startWorkWithTimeout() {
+        let startWork = getAnchor('Click');
+
+        startWork.click();
+    }
+
+    function choiseRandomAd() {
+        let anchorAds = getAnchorAds();
+        let choiseAds = getRandomInt(0, 4);
+        console.log('randomAdNumber ' + choiseAds);
     }
 });
