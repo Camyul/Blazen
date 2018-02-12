@@ -147,5 +147,7 @@ $(document).ready(function() {
         let anchorAds = getAnchorAds();
         let choiseAds = getRandomInt(0, 4);
         console.log('randomAdNumber ' + choiseAds);
+
+        anchorAds[choiseAds].click();
     }
 });
