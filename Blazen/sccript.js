@@ -9,14 +9,14 @@ $(document).ready(function() {
     if (startMining) {
 
         console.log('Start Mining');
-        let randomTime = getRandomInt(5500, 9700)
+        let randomTime = getRandomInt(3000, 5900)
         console.log(randomTime);
         setTimeout(startMiningWithTimeout, randomTime);
         return;
     } else if (resumeWork) {
 
         console.log('Resume Work');
-        let randomTime = getRandomInt(5500, 9700)
+        let randomTime = getRandomInt(3000, 6500)
         console.log(randomTime);
         setTimeout(resumeWorkWithTimeout, randomTime);
         return;
@@ -35,13 +35,13 @@ $(document).ready(function() {
             let anchorAds = getAnchorAds();
             if (anchorAds.length === 5) {
 
-                let randomTime = getRandomInt(5500, 9700);
+                let randomTime = getRandomInt(3000, 6600);
                 console.log('Choise Ad');
                 console.log(randomTime);
 
                 setTimeout(choiseRandomAd, randomTime);
             } else {
-                let randomTime = getRandomInt(5500, 9700);
+                let randomTime = getRandomInt(3000, 6600);
                 console.log('Click');
                 console.log(randomTime);
 
@@ -70,7 +70,7 @@ $(document).ready(function() {
                 console.log(radio.length + ' radio');
                 radio[randomNum].checked = true;
 
-                let randomTime = getRandomInt(5500, 9700)
+                let randomTime = getRandomInt(4000, 6700)
                 console.log(randomTime);
 
                 setTimeout(complete, randomTime);
