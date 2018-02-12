@@ -15,6 +15,17 @@ $(document).ready(function() {
             ch[i].checked = true;
 
         }
+        if (ch.length === radio.length) {
+            let randomNum = getRandomInt(0, 29);
+
+            radio[randomNum].checked = true;
+            console.log(radio.length + ' radio');
+
+            let randomTime = getRandomInt(5500, 9700)
+            console.log(randomTime);
+
+            setTimeout(complete, randomTime);
+        }
 
         let randomNum = getRandomInt(1, 6);
 
