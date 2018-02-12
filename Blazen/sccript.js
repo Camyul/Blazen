@@ -10,12 +10,10 @@ $(document).ready(function() {
 
         //startMining.click();
         setTimeout(startMining.click(), 7000);
-        return;
     } else if (resumeWork) {
 
         //resumeWork.click();
         setTimeout(resumeWork.click(), 7000);
-        return;
     } else {
 
         let ch = document.getElementsByClassName('pulsante_low');
@@ -26,9 +24,12 @@ $(document).ready(function() {
         console.log(startWork + 'Click');
 
         if (startWork && ch.length === 0) {
+            console.log('Click');
 
-            //resumeWork.click();
-            setTimeout(startWork.click(), 7000);
+            let anchorAds = getAnchorAds();
+            console.log(anchorAds);
+            console.log(anchorAds.length);
+            //setTimeout(startWork.click(), 7000);
             return;
         }
 
@@ -76,6 +77,21 @@ $(document).ready(function() {
 
     function complete() {
         document.getElementsByClassName('pulsante2')[0].click();
+    }
+
+    function getAnchorAds() {
+        let aTags = document.getElementsByTagName("a");
+        let result = [];
+
+        for (var i = 0; i < aTags.length; i++) {
+            let url = aTags.href;
+
+            if (url.includes('PanelShop new.php?Scelta')) {
+                result.push(aTags[i]);
+            }
+        }
+
+        return result;
     }
 
     function getAnchor(searchText) {
