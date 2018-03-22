@@ -1,10 +1,18 @@
 $(document).ready(function() {
 
     let startMining = getAnchor('Start Mining');
-    console.log(startMining + ' Start Mining');
+    //console.log(startMining + ' Start Mining');
 
     let resumeWork = getAnchor('Resume work');
-    console.log(resumeWork + ' resumeWork');
+    //console.log(resumeWork + ' resumeWork');
+
+    //Get all checkboxes(included radio) in page
+    let ch = document.getElementsByClassName('pulsante_low');
+    //console.log(ch.length + ' cheboxes');
+
+
+    let startWork = getAnchor('Click');
+    //console.log(startWork + 'Click');
 
     if (startMining) {
 
@@ -20,83 +28,90 @@ $(document).ready(function() {
         console.log(randomTime);
         setTimeout(resumeWorkWithTimeout, randomTime);
         return;
-    } else {
+    } else if (startWork && ch.length === 0) {
 
-        let ch = document.getElementsByClassName('pulsante_low');
+        console.log('Choise Ad or Click');
 
-        console.log(ch.length + ' cheboxes');
+        let anchorAds = getAnchorAds();
 
-        let startWork = getAnchor('Click');
-        console.log(startWork + 'Click');
+        if (anchorAds.length === 5) {
 
-        if (startWork && ch.length === 0) {
+            console.log('Choise Ad');
+
+            let randomTime = getRandomInt(3000, 6600);
+            console.log(randomTime);
+
+            setTimeout(choiseRandomAd, randomTime);
+        } else {
+            let randomTime = getRandomInt(3000, 6600);
             console.log('Click');
+            console.log(randomTime);
 
-            let anchorAds = getAnchorAds();
-            if (anchorAds.length === 5) {
-
-                let randomTime = getRandomInt(3000, 6600);
-                console.log('Choise Ad');
-                console.log(randomTime);
-
-                setTimeout(choiseRandomAd, randomTime);
-            } else {
-                let randomTime = getRandomInt(3000, 6600);
-                console.log('Click');
-                console.log(randomTime);
-
-                setTimeout(startWorkWithTimeout, randomTime);
-            }
-            return;
+            setTimeout(startWorkWithTimeout, randomTime);
         }
+        return;
+    } else if (ch.length > 0) {
+        console.log('Check for Bonus Radio or In Ad');
 
         let radio = [];
 
-        if (ch.length > 0) {
-            for (let i = 0; i < ch.length; i += 1) {
+        //Get checkboxes type radio
+        for (let i = 0; i < ch.length; i += 1) {
 
-                if (ch[i].type == 'radio') {
-                    radio.push(ch[i]);
-                    continue;
-                }
-
-                ch[i].checked = true;
-
+            if (ch[i].type == 'radio') {
+                radio.push(ch[i]);
+                continue;
             }
 
-            if (radio.length === 30) {
-                let randomNum = getRandomInt(0, 29);
+            ch[i].checked = true;
 
-                console.log(radio.length + ' radio');
-                radio[randomNum].checked = true;
-
-                let randomTime = getRandomInt(4000, 6700)
-                console.log(randomTime);
-
-                setTimeout(complete, randomTime);
-            } else {
-                let randomNum = getRandomInt(0, 5);
-
-                radio[randomNum].checked = true;
-                console.log(radio.length + ' radio');
-
-                let randomTime = getRandomInt(51500, 70700)
-                console.log(randomTime);
-
-                setTimeout(complete, randomTime);
-            }
         }
+
+        if (radio.length === 30) {
+            console.log('Bonus Radio');
+            let randomNum = getRandomInt(0, 29);
+
+            console.log(radio.length + ' radio');
+            radio[randomNum].checked = true;
+
+            let randomTime = getRandomInt(4000, 6700)
+            console.log(randomTime);
+
+            setTimeout(complete, randomTime);
+        } else {
+            console.log('Waiting Ad Timeout');
+            let randomNum = getRandomInt(2, 5);
+
+            radio[randomNum].checked = true;
+            console.log(ch.length + ' cheboxes');
+            console.log(radio.length + ' radio');
+
+            let randomTime = getRandomInt(51500, 70700)
+            console.log(randomTime);
+
+            setTimeout(complete, randomTime);
+        }
+        return;
+    } else {
+        let randomTime = getRandomInt(4000, 6700)
+        console.log(randomTime + ' refresh Page');
+
+        setTimeout(refreshPage, randomTime);
+        return;
     }
+
 
     function getRandomInt(min, max) {
         return Math.floor(Math.random() * (max - min + 1) + min);
     }
 
     function complete() {
+        //console.log('Complete Ex');
         document.getElementsByClassName('pulsante2')[0].click();
     }
 
     function getAnchorAds() {
+        //console.log('getAnchorAds Ex');
         let aTags = document.getElementsByTagName("a");
         let result = [];
 
@@ -112,6 +127,7 @@ $(document).ready(function() {
     }
 
     function getAnchor(searchText) {
+        //console.log('getAnchor Ex');
         let aTags = document.getElementsByTagName("a");
         let found;
 
@@ -127,11 +143,13 @@ $(document).ready(function() {
 
     function startMiningWithTimeout() {
         let startMining = getAnchor('Start Mining');
+        //console.log('Start Mining Work Ex');
 
         startMining.click();
     }
 
     function resumeWorkWithTimeout() {
+        //console.log('resume Work Ex');
         let resumeWork = getAnchor('Resume work');
 
         resumeWork.click();
@@ -139,6 +157,14 @@ $(document).ready(function() {
 
     function startWorkWithTimeout() {
         let startWork = getAnchor('Click');
+        //console.log('Start work Ex');
+
+        //If startWork not exist - site is broken
+        if (typeof startWork == 'undefined') {
+            console.log(startWork + ' refresh Page');
+
+            setInterval(refreshPage, 3000);
+        }
 
         startWork.click();
     }
@@ -146,8 +172,14 @@ $(document).ready(function() {
     function choiseRandomAd() {
         let anchorAds = getAnchorAds();
         let choiseAds = getRandomInt(0, 4);
+        //console.log('choiseRandomAd Ex');
         console.log('randomAdNumber ' + choiseAds);
 
         anchorAds[choiseAds].click();
+    }
+
+    function refreshPage() {
+        //console.log('Refresh Page Ex');
+        location.reload();
     }
 });
