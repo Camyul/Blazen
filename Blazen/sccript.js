@@ -10,6 +10,12 @@ $(document).ready(function() {
     let ch = document.getElementsByClassName('pulsante_low');
     //console.log(ch.length + ' cheboxes');
 
+    //Get Bonus Button
+    let bonus = document.getElementsByClassName('pulsante2');
+    // console.log(bonus);
+    // if (bonus.length > 0) {
+    //     console.log(bonus[0].value);
+    // }
 
     let startWork = getAnchor('Click');
     //console.log(startWork + 'Click');
@@ -28,8 +34,13 @@ $(document).ready(function() {
         console.log(randomTime);
         setTimeout(resumeWorkWithTimeout, randomTime);
         return;
-    } else if (startWork && ch.length === 0) {
+    } else if (bonus.length > 0 && bonus[0].value === 'Bonus Mining') {
+        console.log('Bonus Mining');
+        let randomTime = getRandomInt(3000, 5700)
+        console.log(randomTime);
+        setTimeout(bonusMiningWithTimeout, randomTime);
 
+    } else if (startWork && ch.length === 0) {
         console.log('Choise Ad or Click');
 
         let anchorAds = getAnchorAds();
@@ -181,5 +192,11 @@ $(document).ready(function() {
     function refreshPage() {
         //console.log('Refresh Page Ex');
         location.reload();
+    }
+
+    function bonusMiningWithTimeout() {
+        //console.log('Bonus Mining Ex');
+
+        document.getElementsByClassName('pulsante2')[0].click();
     }
 });
